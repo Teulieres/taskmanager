@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <h1> Management Monitor </h1>
+      <%= link_to "Add a task", new_task_path, class:'btn btn-success' %>
+      <ul class='list-unstyled'>
+        <% @tasks.each do |task| %>
+          <li class='panel panel-default'>
+            Task content: <%= task.title %>
+            <div class='cta'>
+
+              <%= link_to edit_task_path(task), class:'btn btn-default' do %>
+                <i class="glyphicon glyphicon-pencil"></i>
+              <% end %>
+              <%= link_to task_path(task), method: :delete,
+              data: { confirm: "Are you sure?" }, class:'btn btn-danger'  do %>
+                <i class="glyphicon glyphicon-trash"></i>
+              <% end %>
+              <%= link_to "Show task", task_path(task), class:'btn btn-info'%>
+            </div>
+
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
